@@ -10,33 +10,33 @@ namespace globalplatform.net
     /// Represents a command APDU.
     /// </summary>
     /// ToDo: Support Extended APDU
-    class CommandAPDU
+    public class CommandAPDU
     {
-        #region Static Fields
+        #region Constant Fields
         /// <summary>
         /// CLA offset in APDU
         /// </summary>
-        public static byte OFFSET_CLA   = 0x0;
+        public const byte OFFSET_CLA   = 0x0;
         /// <summary>
         /// INS offset in APDU
         /// </summary>
-        public static byte OFFSET_INS   = 0x1;
+        public const byte OFFSET_INS = 0x1;
         /// <summary>
         /// P1 offset in APDU
         /// </summary>
-        public static byte OFFSET_P1    = 0x2;
+        public const byte OFFSET_P1 = 0x2;
         /// <summary>
         /// P2 offset in APDU
         /// </summary>
-        public static byte OFFSET_P2    = 0x3;
+        public const byte OFFSET_P2 = 0x3;
         /// <summary>
         /// LC offset in APDU
         /// </summary>
-        public static byte OFFSET_LC    = 0x4;
+        public const byte OFFSET_LC = 0x4;
         /// <summary>
         /// DATA offset in APDU
         /// </summary>
-        public static byte OFFSET_CDATA = 0x5;
+        public const byte OFFSET_CDATA = 0x5;
         #endregion
 
         #region Private Fields

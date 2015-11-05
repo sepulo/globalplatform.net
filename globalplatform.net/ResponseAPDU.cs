@@ -10,18 +10,8 @@ namespace globalplatform.net
     /// Represents repsonse APDU
     /// </summary>
     ///
-    class ResponseAPDU
+    public class ResponseAPDU
     {
-        #region Static Fields
-        /// <summary>
-        /// SW1 offset in repsonse
-        /// </summary>
-        public static byte OFFSET_SW1 = 0x0;
-        /// <summary>
-        /// SW2 offset in response
-        /// </summary>
-        public static byte OFFSET_SW2 = 0x1;
-        #endregion
 
         #region Private Fields
         private int mSW1;
@@ -56,8 +46,15 @@ namespace globalplatform.net
         {
             mSW1 = sw1;
             mSW2 = sw2;
-            mData = new byte[data.Length];
-            System.Array.Copy(data, mData, mData.Length);
+            if (data != null)
+            {
+                mData = new byte[data.Length];
+                System.Array.Copy(data, mData, mData.Length);
+            }
+            else
+            {
+                mData = new byte[0];
+            }
         }
 
         /// <summary>
@@ -69,11 +66,11 @@ namespace globalplatform.net
         {
             if(response.Length < 2)
                 throw new Exception("Response APDU must be 2 bytes or more.");
-            mSW1 = response[OFFSET_SW1];
-            mSW2 = response[OFFSET_SW2];
+            mSW1 = response[response.Length - 2];
+            mSW2 = response[response.Length - 1];
             mData = new byte[response.Length - 2];
             if(mData.Length > 0)
-                System.Array.Copy(response, 2, mData, 0, mData.Length);
+                System.Array.Copy(response, 0, mData, 0, mData.Length);
         }
         #endregion
         
@@ -85,8 +82,8 @@ namespace globalplatform.net
         public byte[] ToByteArray()
         {
             byte[] result = new byte[mData.Length + 2];
-            result[OFFSET_SW1] = (byte)mSW1;
-            result[OFFSET_SW2] = (byte)mSW2;
+            result[result.Length - 2] = (byte)mSW1;
+            result[result.Length - 1] = (byte)mSW2;
             if(mData.Length > 0)
                 System.Array.Copy(mData, 0, result, 2, mData.Length);
             return result;

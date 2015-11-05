@@ -6,30 +6,29 @@ using System.Threading.Tasks;
 
 namespace globalplatform.net
 {
-    class SecurityLevel
+    public class SecurityLevel
     {
-        #region Static Fields
+        #region Constant Fields
 
         /// <summary>
         /// NO SECURITY LEVEL
         /// </summary>
-        public static int NO_SECURITY_LEVEL = 0x00;
+        public const int NO_SECURITY_LEVEL = 0x00;
 
         /// <summary>
         /// C-MAC
         /// </summary>
-        public static int C_MAC = 0x01;
+        public const int C_MAC = 0x01;
 
         /// <summary>
         /// C-DECRYPTION
         /// </summary>
-        public static int C_DECRYPTION = 0x2;
+        public const int C_DECRYPTION = 0x2;
 
         /// <summary>
         /// R-MAC
         /// </summary>
-        public static int R_MAC = 0x10;
-
+        public const int R_MAC = 0x10;
 
         #endregion
     }
